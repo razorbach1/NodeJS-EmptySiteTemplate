@@ -18,5 +18,16 @@ pipeline {
       }
     }
 
+    stage('Test Code') {
+      steps {
+        sh '''node server.js &
+curl localhost:8081 
+if [[ "x$?" == "x0" ]];
+then    echo good;
+else exit 1; 
+fi'''
+      }
+    }
+
   }
 }
