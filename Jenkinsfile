@@ -9,6 +9,7 @@ pipeline {
     stage('Check Out Code') {
       steps {
         git(url: 'https://github.com/razorbach1/NodeJS-EmptySiteTemplate.git', branch: 'master', changelog: true, poll: true)
+        cleanWs(cleanWhenAborted: true, cleanWhenFailure: true, cleanWhenSuccess: true)
       }
     }
 
@@ -18,15 +19,9 @@ pipeline {
       }
     }
 
-    stage('Test Code') {
+    stage('packege code') {
       steps {
-        sh '''node server.js &
- sleep 5 &&
-curl localhost:8081 
-if [[ "x$?" == "x0" ]];
-then    echo good;
-else exit 1; 
-fi'''
+        sh 'tar -czvf.node.tar.gz .'
       }
     }
 
