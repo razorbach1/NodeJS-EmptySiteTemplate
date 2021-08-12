@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'entos7-nodejs'
+    }
+
+  }
   stages {
     stage('Check Out Code') {
       steps {
