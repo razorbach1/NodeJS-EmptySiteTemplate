@@ -32,7 +32,7 @@ fi'''
 
     stage('Packege Code') {
       steps {
-        sh 'tar -czvf node.tar.gz .'
+        sh 'tar -czvf node.tar.gz *'
       }
     }
 
