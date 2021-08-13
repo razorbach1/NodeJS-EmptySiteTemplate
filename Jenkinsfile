@@ -20,7 +20,8 @@ pipeline {
 
     stage('test Code') {
       steps {
-        sh '''node server.js
+        sh '''node server.js &
+sleep 5 &&
 curl localhost:8080
 if [[ "x$?" == "x0" ]]; 
 then    echo good; 
