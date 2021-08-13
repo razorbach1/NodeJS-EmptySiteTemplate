@@ -30,5 +30,17 @@ fi'''
       }
     }
 
+    stage('Packege Code') {
+      steps {
+        sh 'tar -czvf node.tar.gz .'
+      }
+    }
+
+    stage('publish the archive') {
+      steps {
+        archiveArtifacts 'node.tar.gz'
+      }
+    }
+
   }
 }
